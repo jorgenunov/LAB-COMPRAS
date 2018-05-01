@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "_MyLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.TituloPagina</title>
+    <link rel="stylesheet" href="	https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Gestão de Despesas</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Home" asp-action="Index">Entrada</a></li>
+                <li><a asp-controller="Home" asp-action="Conceito">Conceito</a></li>
+                <li><a asp-controller="Despesa" asp-action="Index">Despesas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - Jorge Vinhas</p>
+        </footer>
+
+
+    </div>
+
+
+
+</body>
+</html>
