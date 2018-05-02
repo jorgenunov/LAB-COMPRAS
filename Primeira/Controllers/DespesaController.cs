@@ -11,7 +11,8 @@ namespace Primeira.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List<Despesa> despesas = Repository.Despesas;
+            return View(despesas);
         }
 
         [HttpGet]
@@ -25,11 +26,23 @@ namespace Primeira.Controllers
         {
             if (ModelState.IsValid)
             {
+                Repository.novaDespesa(d);
                 return View("DespesaConfirmada", d);
             }
             else
                 return View();
 
+        }
+        public IActionResult DespesaConfirmada()
+        {
+            return View();
+        }
+        
+        public IActionResult LimparDespesas()
+        {
+            Repository.ClearDespesas();
+            return View("Index", Repository.Despesas);
+            
         }
     }
 }
