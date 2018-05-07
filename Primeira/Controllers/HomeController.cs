@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Primeira.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,6 +21,11 @@ namespace Primeira.Controllers
         }
 
         public IActionResult Conceito()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Tempo()
         {
             return View();
         }
