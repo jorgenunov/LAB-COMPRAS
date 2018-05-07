@@ -1,0 +1,36 @@
+﻿@model Conta
+@{ 
+    ViewBag.TituloPagina = "Nova Conta";
+}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2 class="text-center"><strong>Nova Conta</strong></h2>
+        <form asp-action="NovaConta" class="well" method="post">
+            <div asp-validation-summary="All"></div>
+            <p>
+                <label asp-for="NomeTitular">Nome do Titular:</label>
+                <input asp-for="NomeTitular" class="form-control" />
+            </p>
+            <p>
+                <label asp-for="Saldo">Saldo Contabilistico:</label>
+                <input asp-for="Saldo" value="1" class="form-control" />
+            </p>
+            <p>
+                <label asp-for="Ativa">Ativa:</label>
+                <select asp-for="Ativa" class="form-control">
+                    <option value="True">Sim</option>
+                    <option value="False" selected="selected">Não</option>
+                </select>
+            </p>
+            <p class="text-center">
+                <button class="btn btn-success btn-lg" type="submit">
+                    <span class="glyphicon glyphicon glyphicon-plus"></span>
+                    Adicionar Conta
+                </button>
+            </p>
+        </form>
+        <div class="col-md-3"></div>
+    </div>
+</div>

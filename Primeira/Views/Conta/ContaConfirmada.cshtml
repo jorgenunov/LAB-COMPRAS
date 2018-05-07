@@ -1,0 +1,30 @@
+﻿@model Conta
+@{ 
+    ViewBag.TituloPagina = "Conta Confirmada";
+}
+
+<h2><strong>Conta Confirmada</strong></h2>
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+            <p><strong>Nome: </strong>@Model.NomeTitular</p>
+            <p><strong>Saldo: </strong>@Model.Saldo</p>
+            <p><strong>Ativa: </strong>
+            @if (Model.Ativa == true)
+            { 
+                @:Sim
+            }
+            else
+            {
+                @:Não
+
+            }
+            </p>
+
+        </div>
+        <div class="row">
+            <a asp-action="NovaConta" class="col-md-6 text-center">Adicionar Nova Conta <span class="glyphicon glyphicon-plus"></span></a>
+            <a asp-action="Index" class="col-md-6 text-center">Lista de Contas <span class="glyphicon glyphicon-eye-open"></span></a>
+        </div>
+    </div>
+</div>

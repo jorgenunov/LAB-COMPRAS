@@ -11,7 +11,7 @@ namespace Primeira.Controllers
     {
         public IActionResult Index()
         {
-            List<Despesa> despesas = Repository.Despesas;
+            List<Despesa> despesas = Repository.Despesa;
             return View(despesas);
         }
 
@@ -41,8 +41,9 @@ namespace Primeira.Controllers
         public IActionResult LimparDespesas()
         {
             Repository.ClearDespesas();
-            return View("Index", Repository.Despesas);
+            return View("Index", Repository.Despesa);
             
         }
+
     }
 }

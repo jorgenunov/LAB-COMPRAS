@@ -1,4 +1,4 @@
-﻿@model List<Primeira.Models.Despesa>
+﻿@model List<Despesa>
 @{
     ViewBag.TituloPagina = "Depesas";
 }
@@ -24,7 +24,7 @@ else
             <th>Categoria</th>
             <th>Pago</th>
         </tr>
-        @foreach (Primeira.Models.Despesa d in Model)
+        @foreach (Despesa d in Model)
         {
             <tr>
                 <td>@d.NomeDespesa</td>
