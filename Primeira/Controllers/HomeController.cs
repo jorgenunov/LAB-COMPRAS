@@ -25,9 +25,46 @@ namespace Primeira.Controllers
             return View();
         }
 
+       [HttpGet]
         public async Task<IActionResult> Tempo()
         {
-            return View();
+            //criar e configurar o cliente HTTP 
+            HttpClient client = MyHTTPClient.Client;
+            
+            string path = "v1/current.json?key=45e3ca0ce8b54abcb9b85027180705&q=Paris";
+
+
+            //fazer o pedido HTTP, receber a resposta, guardar JSON
+            HttpResponseMessage response = client.GetAsync(path).Result;
+            string json = await response.Content.ReadAsStringAsync();
+
+            //converter JSON para um objeto do tipo WeatherApiResponse 
+            WeatherApiResponse wc = JsonConvert.DeserializeObject<WeatherApiResponse>(json); 
+
+
+            return View(wc);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Tempo(string cidade)
+        {
+            //criar e configurar o cliente HTTP 
+            HttpClient client = MyHTTPClient.Client;
+            string path = "v1/current.json?key=45e3ca0ce8b54abcb9b85027180705&q=" + cidade;
+
+
+            //fazer o pedido HTTP, receber a resposta, guardar JSON
+            HttpResponseMessage response = client.GetAsync(path).Result;
+            string json = await response.Content.ReadAsStringAsync();
+
+            //converter JSON para um objeto do tipo WeatherApiResponse 
+            WeatherApiResponse wc = JsonConvert.DeserializeObject<WeatherApiResponse>(json);
+
+
+            return View(wc);
+
+        }
+
+
     }
 }
