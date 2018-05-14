@@ -1,0 +1,34 @@
+﻿@model Primeira.Models.CurrencyConvertApiResponse
+@{
+    ViewBag.TituloPagina = "Converter Moeda";
+}
+
+<div>
+    <h2>Converter Moeda</h2>
+    
+        <form asp-action="ConverterMoeda" class="well" method="post">
+            <div asp-validation-summary="All"></div>
+    <p>
+        <label asp-for="Amount">Valor:</label>
+        <input asp-for="Amount" class="form-control" />
+    </p>
+    <p>
+        <label asp-for="From">De:</label>
+        <input asp-for="From"  class="form-control" />
+    </p>
+    <p>
+        <label asp-for="To">Para:</label>
+        <input asp-for="To" class="form-control" />
+    </p>
+    
+    <p class="text-center">
+        <button class="btn btn-success btn-lg" type="submit">
+            <span class="glyphicon glyphicon glyphicon-plus"></span>
+           Converter
+        </button>
+    </p>
+    </form>
+   
+</div>
+
+
