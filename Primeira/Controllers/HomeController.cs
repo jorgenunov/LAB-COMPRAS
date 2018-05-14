@@ -48,16 +48,16 @@ namespace Primeira.Controllers
         [HttpPost]
         public async Task<IActionResult> Tempo(string cidade)
         {
-            //criar e configurar o cliente HTTP 
+            //Criar e configurar o cliente HTTP 
             HttpClient client = MyHTTPClient.Client;
             string path = "v1-+/current.json?key=45e3ca0ce8b54abcb9b85027180705&q=" + cidade;
 
 
-            //fazer o pedido HTTP, receber a resposta, guardar JSON
+            //Fazer o pedido HTTP, receber a resposta, guardar JSON
             HttpResponseMessage response = client.GetAsync(path).Result;
             string json = await response.Content.ReadAsStringAsync();
 
-            //converter JSON para um objeto do tipo WeatherApiResponse 
+            //Converter JSON para um objeto do tipo WeatherApiResponse 
             WeatherApiResponse wc = JsonConvert.DeserializeObject<WeatherApiResponse>(json);
 
 
@@ -66,20 +66,10 @@ namespace Primeira.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConverterMoeda()
+        public ActionResult ConverterMoeda()
         {
-            //criar e configurar o cliente HTTP 
-            HttpClient client = MyConvertHttpClient.Client;
-            string path = "http://193.137.46.2/api/CurrencyConvert";
-
-            HttpResponseMessage response = client.GetAsync(path).Result;
-            string json = await response.Content.ReadAsStringAsync();
-
-            CurrencyConvertApiResponse cc = JsonConvert.DeserializeObject<CurrencyConvertApiResponse>(json);
-
-
-
-            return View(cc);
+            
+            return View();
         }
 
         [HttpPost]
