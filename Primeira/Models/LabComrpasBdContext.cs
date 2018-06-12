@@ -11,6 +11,7 @@ namespace Primeira.Models
     {
 
         public DbSet<Despesa> Despesas { get; set; }
+        public DbSet<Conta> Contas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

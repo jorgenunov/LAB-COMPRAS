@@ -8,7 +8,7 @@ namespace Primeira.Models
     public class Repository
     {
         //private static List<Despesa> despesas = new List<Despesa>();
-        private static List<Conta> contas = new List<Conta>();
+        //private static List<Conta> contas = new List<Conta>();
         
         public static List<Despesa> Despesa
         {
@@ -20,6 +20,16 @@ namespace Primeira.Models
                 return despesas;
             }
         }
+        public static List<Conta> Contas
+        {
+            get
+            {
+                LabComrpasBdContext context = new LabComrpasBdContext();
+                List<Conta> contas = context.Contas.ToList();
+                return contas;
+            }
+        }
+
         public static void novaDespesa(Despesa novaDespesa)
         {
             LabComrpasBdContext context = new LabComrpasBdContext();
@@ -28,18 +38,13 @@ namespace Primeira.Models
           
         }
 
-        public static List<Conta> Contas
-        {
-            get
-            {
-                
-                return contas;
-            }
-        }
+        
 
         public static void AddConta(Conta newContas)
         {
-            contas.Add(newContas);
+            LabComrpasBdContext context = new LabComrpasBdContext();
+            context.Contas.Add(newContas);
+            context.SaveChanges();
         }
         public static void ClearDespesa()
         {
@@ -52,17 +57,42 @@ namespace Primeira.Models
 
             context.SaveChanges();
 
-
-
-        }          
-
-        public static void ClearContas()
-        {
-            contas.Clear();
         }
 
 
-    
+        public static void ClearContas()
+        {
+            LabComrpasBdContext context = new LabComrpasBdContext();
 
-}
+            foreach (Conta c in Contas)
+            {
+                context.Contas.Remove(c);
+            }
+
+            context.SaveChanges();
+
+        }
+
+        public static Despesa GetDespesas(int id)
+        {
+            foreach (Despesa d in Despesa)
+            {
+                if (d.ID == id)
+                    return d;
+            }
+            return null;
+        }
+
+        public static Conta GetContas(string name)
+        {
+            foreach (Conta c in Contas)
+            {
+                if (c.NomeTitular == name)
+                    return c;
+            }
+            return null;
+        }
+
+
+    }
 }

@@ -17,9 +17,10 @@ namespace Primeira.Models
                 return despesas;
             }
         }
-        public static void novaDespesa(Despesa novaDespesa)
+        public static void AddDespesa(Despesa newDespesa)
         {
-            despesas.Add(novaDespesa);
+           
+            despesas.Add(newDespesa);
         }
 
         public static List<Conta> Contas
@@ -41,6 +42,25 @@ namespace Primeira.Models
             contas.Clear();
         }
 
+        public static Despesa GetDespesas(int id)
+        {
+            foreach (Despesa d in despesas)
+            {
+                if (d.ID == id)
+                    return d;
+            }
+            return null;
+        }
+
+        public static Conta GetContas(string name)
+        {
+            foreach (Conta c in contas)
+            {
+                if (c.NomeTitular == name)
+                    return c;
+            }
+            return null;
+        }
 
     }
 }
