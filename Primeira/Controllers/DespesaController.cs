@@ -40,7 +40,7 @@ namespace Primeira.Controllers
         
         public IActionResult LimparDespesas()
         {
-            Repository.ClearDespesas();
+            Repository.ClearDespesa();
             return View("Index", Repository.Despesa);
             
         }

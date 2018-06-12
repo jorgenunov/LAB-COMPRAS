@@ -8,6 +8,9 @@ namespace Primeira.Models
 {
     public class Despesa
     {
+
+        public int ID { get; set; }
+
         [Required(ErrorMessage="Por favor preencha o Nome da Despesa")]
         public string NomeDespesa { get; set; }
        
